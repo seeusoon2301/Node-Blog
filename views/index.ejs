@@ -1,0 +1,31 @@
+<div class="author">
+    <h1 class="author__heading">Hi, I am KhoaNam.</h1>
+    <p class="author__body">Web developer and content creator.</p>
+</div>
+
+<img src="/img/hero-image.webp" alt="person looking out through window" class="hero-image" width="981" height="528">
+
+<section class="articles">
+    <h2 class="articles__heading">Latest Posts</h2>
+    <ul class="article-ul"> 
+        <!-- <li>
+            <a href="#">
+                <span>Post Title</span>
+                <span class="articles-list__date">Date</span>
+            </a>
+        </li> -->
+        <% data.forEach(post => {%>
+        <li>
+            <a href="/post/<%= post._id%>">
+                <span><%= post.title %></span>
+                <span class="articles-list__date"><%= post.createAt.toLocaleDateString('vi-VN', { day: 'numeric', month: 'short', year: 'numeric' }) %></span>
+            </a>
+        </li>
+        <% }) %>
+    </ul>
+
+    <% if (nextPage !== null) {%>
+        <a href="/?page=<%= nextPage %>" class="pagination">&lt; View Older Posts</a>
+    <% } %>
+    
+</section>
